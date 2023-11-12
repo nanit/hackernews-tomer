@@ -1,7 +1,12 @@
 (ns app.core
-  (:gen-class))
+  (:require [org.httpkit.server :refer [run-server]]
+            [ring.middleware.params :as params]
+            [ring.util.response :refer [response]]))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+(defn ping-handler [request]
+  (response {:status 200
+             :headers {"Content-Type" "application/json"}
+             :body "{\"body\": \"pong\"}"}))
+
+(defn -main []
+  (run-server (params/wrap-params ping-handler) {:port 8080}))
