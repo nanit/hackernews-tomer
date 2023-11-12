@@ -1,4 +1,4 @@
-/target
+/app/target
 /classes
 /checkouts
 profiles.clj
@@ -9,7 +9,7 @@ pom.xml.asc
 /.lein-*
 /.nrepl-port
 /.prepl-port
-.hgignore
+app/.hgignore
 .hg/
 **iml
 /.idea
