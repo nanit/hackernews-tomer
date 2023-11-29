@@ -7,7 +7,8 @@
                  [http-kit/http-kit "2.5.0"]
                  [ring/ring-core "1.9.5"]
                  [ring/ring-json "0.5.1"]
-                 [ring/ring-mock "0.4.0"]]
+                 [ring/ring-mock "0.4.0"]
+                 [compojure "1.5.0"]]
   :main ^:skip-aot app.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
