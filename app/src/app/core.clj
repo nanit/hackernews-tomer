@@ -1,18 +1,17 @@
 (ns app.core
   (:require [org.httpkit.server :refer [run-server]]
             [ring.util.response :refer [response]]
-            [compojure.core :refer [defroutes GET]]))
+            [compojure.core :refer [defroutes GET]]
+            [ring.middleware.json :refer [wrap-json-response]]))
 
 (defn ping-handler []
-  (response {:status  200
-             :headers {"Content-Type" "application/json"}
-             :body    "{\"body\": \"pong\"}"}))
+  (response {:status "OK"}))
 
 (defroutes unrestricted-routes
            (GET "/_ping" req (ping-handler)))
 
 (defroutes app
-           unrestricted-routes)
+           (wrap-json-response unrestricted-routes))
 (def port 8000)
 (defn -main []
   (run-server app {:port port})
