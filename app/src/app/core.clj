@@ -2,7 +2,8 @@
   (:require [org.httpkit.server :refer [run-server]]
             [ring.util.response :refer [response]]
             [compojure.core :refer [defroutes GET]]
-            [ring.middleware.json :refer [wrap-json-response]]))
+            [ring.middleware.json :refer [wrap-json-response]]
+            [taoensso.timbre :refer [info]]))
 
 (defn ping-handler []
   (response {:status "OK"}))
@@ -13,7 +14,8 @@
 (defroutes app
            (wrap-json-response unrestricted-routes))
 (def port 8000)
+(def ping-url (str "http://localhost:" port "/_ping"))
 (defn -main []
   (run-server app {:port port})
-  (println (str "server running on port " port))
-  (println (str "ping url http://localhost:" port "/_ping")))
+  (info "Server is running" {:port port})
+  (info "Ping URL" {:url ping-url}))
