@@ -15,6 +15,6 @@
            unrestricted-routes)
 (def port 8000)
 (defn -main []
+  (run-server app {:port port})
   (println (str "server running on port " port))
-  (println (str "ping url http://localhost:" port "/_ping"))
-  (run-server app {:port port}))
+  (println (str "ping url http://localhost:" port "/_ping")))
