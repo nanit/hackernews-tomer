@@ -3,18 +3,18 @@
             [ring.util.response :refer [response]]
             [compojure.core :refer [defroutes GET]]))
 
-(defn ping-handler [request]
-  (response {:status 200
+(defn ping-handler []
+  (response {:status  200
              :headers {"Content-Type" "application/json"}
-             :body "{\"body\": \"pong\"}"}))
+             :body    "{\"body\": \"pong\"}"}))
 
 (defroutes unrestricted-routes
-           (GET    "/_ping"                    req (ping-handler req)))
+           (GET "/_ping" req (ping-handler)))
 
 (defroutes app
            unrestricted-routes)
 (def port 8000)
 (defn -main []
   (println (str "server running on port " port))
-  (println (str "ping url http://localhost:" port))
+  (println (str "ping url http://localhost:" port "/_ping"))
   (run-server app {:port port}))
