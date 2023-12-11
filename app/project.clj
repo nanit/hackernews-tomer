@@ -9,7 +9,8 @@
                  [ring/ring-json "0.5.1"]
                  [ring/ring-mock "0.4.0"]
                  [compojure "1.5.0"]
-                 [com.taoensso/timbre "6.3.1"]]
+                 [com.taoensso/timbre "6.3.1"]
+                 [io.staticweb/rate-limit "1.1.0"]]
   :main ^:skip-aot app.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot      :all
