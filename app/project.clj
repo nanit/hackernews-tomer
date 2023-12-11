@@ -11,7 +11,8 @@
                  [compojure "1.5.0"]
                  [com.taoensso/timbre "6.3.1"]
                  [io.staticweb/rate-limit "1.1.0"]
-                 [clj-rate-limiter "0.1.5"]]
+                 [clj-rate-limiter "0.1.6-RC1" :exclusions [com.taoensso/carmine]]
+                 [com.taoensso/carmine "2.12.1"]]
   :main ^:skip-aot app.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot      :all

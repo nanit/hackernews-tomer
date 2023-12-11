@@ -14,6 +14,8 @@
                                        :redis redis
                                        :namespace "APIs"
                                        :interval 1000
+                                       :min-difference 1
+                                       :flood-threshold 5
                                        :max-in-interval 100)))
 
 (defn check-email-middleware [handler]
