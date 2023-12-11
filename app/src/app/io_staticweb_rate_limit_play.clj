@@ -10,7 +10,7 @@
 ;(def rstr (r-storage/redis-storage))
 (def limit (ip-rate-limit :limit-id 1 (java.time.Duration/ofSeconds 1)))
 (def rate-limit-config {:storage storage :limit limit})
-(def app (routes
+(def app (
            (GET "/no-limit" [] "no-limit")
            (wrap-rate-limit
              (GET "/limit" [] "limit")
