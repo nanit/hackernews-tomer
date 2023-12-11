@@ -18,16 +18,20 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Leiningen: cheshire:5.10.0" level="project" />
+    <orderEntry type="library" name="Leiningen: clj-rate-limiter:0.1.5" level="project" />
     <orderEntry type="library" name="Leiningen: clout:2.1.2" level="project" />
     <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-core:2.10.2" level="project" />
     <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.dataformat/jackson-dataformat-cbor:2.10.2" level="project" />
     <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.dataformat/jackson-dataformat-smile:2.10.2" level="project" />
+    <orderEntry type="library" name="Leiningen: com.taoensso/carmine:2.4.4" level="project" />
     <orderEntry type="library" name="Leiningen: com.taoensso/encore:3.68.0" level="project" />
+    <orderEntry type="library" name="Leiningen: com.taoensso/nippy:2.5.2" level="project" />
     <orderEntry type="library" name="Leiningen: com.taoensso/timbre:6.3.1" level="project" />
     <orderEntry type="library" name="Leiningen: com.taoensso/truss:1.11.0" level="project" />
     <orderEntry type="library" name="Leiningen: commons-codec:1.15" level="project" />
     <orderEntry type="library" name="Leiningen: commons-fileupload:1.4" level="project" />
     <orderEntry type="library" name="Leiningen: commons-io:2.10.0" level="project" />
+    <orderEntry type="library" name="Leiningen: commons-pool:1.6" level="project" />
     <orderEntry type="library" name="Leiningen: compojure:1.5.0" level="project" />
     <orderEntry type="library" name="Leiningen: crypto-equality:1.0.0" level="project" />
     <orderEntry type="library" name="Leiningen: crypto-random:1.2.1" level="project" />
@@ -38,11 +42,16 @@
     <orderEntry type="library" name="Leiningen: medley:0.7.3" level="project" />
     <orderEntry type="library" name="Leiningen: nrepl:1.0.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.11.1" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/core.cache:0.6.4" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/core.specs.alpha:0.2.62" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/data.json:0.2.3" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/data.priority-map:0.0.4" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/spec.alpha:0.3.218" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.macro:0.1.5" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.reader:1.3.6" level="project" />
+    <orderEntry type="library" name="Leiningen: org.iq80.snappy/snappy:0.3" level="project" />
     <orderEntry type="library" name="Leiningen: org.nrepl/incomplete:0.1.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.tukaani/xz:1.4" level="project" />
     <orderEntry type="library" name="Leiningen: ring/ring-codec:1.1.3" level="project" />
     <orderEntry type="library" name="Leiningen: ring/ring-core:1.9.5" level="project" />
     <orderEntry type="library" name="Leiningen: ring/ring-json:0.5.1" level="project" />
