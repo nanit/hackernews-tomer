@@ -10,10 +10,18 @@
                                        :redis redis
                                        :namespace "APIs"
                                        :interval 1000
-                                       :min-difference 1
                                        :max-in-interval 100)))
 
+(def limiter-mem (r/create
+                   (r/rate-limiter-factory :memory
+                                           :interval 1000
+                                           :max-in-interval 100)))
+
 (defn -main []
-  (println "Check rate limit")
-  (println (r/allow? limiter "key1"))
-  (println "Done - check rate limit"))
+  (println "Check rate limit: Mem")
+  (println (r/allow? limiter-mem "key1"))
+  (println "Done - check rate limit: Mem")
+
+  (println "Check rate limit: Redis")
+  (println (r/permit? limiter "key1"))
+  (println "Done - check rate limit: Redis"))
