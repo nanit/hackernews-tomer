@@ -1,4 +1,7 @@
-(ns app.throttler_rate_limit_play)
+; abandon doesn't support rate limit keys
+(ns app.throttler_rate_limit_play
+  (:require
+    [throttler.core :refer [throttle-chan throttle-fn]]))
 
 (def limiter (r/create
                (r/rate-limiter-factory :memory
