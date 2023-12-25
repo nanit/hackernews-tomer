@@ -7,25 +7,32 @@
     [ring.util.response :refer [response]]))
 
 (defn in-cool-down-period?
-  []
-  (println "check cool down"))
+  [req]
+  (println "check cool down")
+  ; Add your cool down logic here
+  false)
 
 (defn upsert-new-attempt
-  []
-  (println "upsert new attempt"))
+  [req]
+  (println "upsert new attempt")
+  ; Add logic to upsert new attempt here
+  req)
 
 (defn check-email-middleware [handler]
   (fn [request]
-    (in-cool-down-period?)
-    (upsert-new-attempt)
-    (handler request)))
+    (if (in-cool-down-period? request)
+      (response "Cool down period, try again later.")
+      (handler (upsert-new-attempt request)))))
 
 (defn login [req]
-  "hello")
+  (let [user-param (-> req :query-params :user)]
+    (if user-param
+      (str "Hello, " user-param)
+      "User parameter not found")))
 
 (defroutes limit-route
            (wrap-routes
-             (routes (GET "/login" req (login req)))
+             (routes (GET "/login" [req] (login req)))
              check-email-middleware))
 
 (defroutes app
