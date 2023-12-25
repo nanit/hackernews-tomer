@@ -3,7 +3,7 @@
     [clj-rate-limiter.core :as r]))
 
 (def redis {:pool {}
-            :spec {:uri "redis://:password@localhost:6379"}})
+            :spec {:uri "redis://password@localhost:6379"}})
 
 (def limiter (r/create
                (r/rate-limiter-factory :redis
