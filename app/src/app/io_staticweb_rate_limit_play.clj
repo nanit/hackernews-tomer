@@ -4,7 +4,8 @@
 (require '[io.staticweb.rate-limit.storage :as storage])
 (require '[io.staticweb.rate-limit.redis :as redis])
 (require '[org.httpkit.server :refer [run-server]])
-(require '[app.io-staticweb-rate-limit-util :refer [ip-email-rate-limit custom-response-builder]])
+(require '[app.io-staticweb-rate-limit-util :refer [ip-email-rate-limit]])
+(require '[app.io-staticweb-rate-limit-response :refer [custom-response-builder]])
 
 ; Define redis connection
 (def redis-conn-pw
