@@ -24,3 +24,10 @@
 (defn ip-email-rate-limit
   [id quota ttl]
   (->IpEmailRateLimit id quota ttl))
+
+(defn custom-response-builder
+  [quota retry-after]
+  {:body "{\"error\":\"rate-limit-exceeded-custom\"}"
+   :headers {"Retry-After" retry-after
+             "Quota" quota}
+   :status 429})
