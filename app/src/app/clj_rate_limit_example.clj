@@ -2,12 +2,15 @@
   (:require
     [clj-rate-limiter.core :as r]))
 
-(def redis {:pool {}
-            :spec {:uri "redis://password@localhost:6379"}})
+(def redis-conn
+  {:pool {}
+   :spec {:host "localhost"
+          :port 6379
+          :password "foopassword"}})
 
 (def limiter (r/create
                (r/rate-limiter-factory :redis
-                                       :redis redis
+                                       :redis redis-conn
                                        :namespace "APIs"
                                        :interval 1000
                                        :max-in-interval 100)))
