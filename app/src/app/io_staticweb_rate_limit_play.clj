@@ -19,7 +19,7 @@
 (def redis-storage (redis/redis-storage redis-conn-pw))
 
 ; Define redis limit
-(def r-limit (ip-email-rate-limit :limit-id 2 (java.time.Duration/ofSeconds 5)))
+(def r-limit (ip-email-rate-limit :limit-id 100 (java.time.Duration/ofSeconds 60)))
 
 ; Define redis middleware
 ; add :response-builder custom-response-builder for custom response
