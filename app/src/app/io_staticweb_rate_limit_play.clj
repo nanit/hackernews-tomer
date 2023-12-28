@@ -24,7 +24,8 @@
   {:pool {}
    :spec {:host "localhost"
           :port 6379
-          :password "foo"}})
+          :password "foo"
+          :user "user"}})
 
 ; Define redis storage
 (def redis-storage (redis/redis-storage redis-conn-pw))
