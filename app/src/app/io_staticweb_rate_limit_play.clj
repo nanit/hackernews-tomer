@@ -2,6 +2,7 @@
 (use 'compojure.core)
 (require '[io.staticweb.rate-limit.middleware :refer [ip-rate-limit wrap-rate-limit]])
 (require '[io.staticweb.rate-limit.storage :as storage])
+(require '[io.staticweb.rate-limit.redis :as redis])
 (require '[org.httpkit.server :refer [run-server]])
 
 ;; Instantiate a storage backend
@@ -13,12 +14,28 @@
 ;; Define the middleware configuration
 (def rate-limit-config {:storage storage :limit limit})
 
-;; Wrap the /limit route in the rate limiting middleware
+; Define redis connection
+(def redis-conn
+  {:pool {}
+   :spec {:host "localhost"
+          :port 6379
+          :password "foopassword"}})
+
+; Define redis storage
+(def redis-storage (redis/redis-storage redis-conn))
+
+; Define redis limit
+(def r-limit (ip-rate-limit :limit-id 1 (java.time.Duration/ofSeconds 10)))
+
+; Define redis middleware
+(def r-rate-limit-config {:storage redis-storage :limit r-limit})
+
+  ;; Wrap the /limit route in the rate limiting middleware
 (def app (routes
            (GET "/no-limit" [] "no-limit")
            (wrap-rate-limit
              (GET "/limit" [] "limit")
-             rate-limit-config)))
+             r-rate-limit-config)))
 
 (defn -main []
   (run-server app {:port 3000})
