@@ -10,7 +10,9 @@
 (defrecord IpRateLimit [id quota ^java.time.Duration ttl]
   limits/RateLimit
   (get-key [self req]
-    (str (.getName ^Class (type self)) id "-" (:remote-addr req)))
+    (let [key (:remote-addr req)]
+      (println key)
+      (str (.getName ^Class (type self)) id "-" key)))
 
   (get-quota [self req]
     quota)
