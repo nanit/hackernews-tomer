@@ -4,7 +4,7 @@
 (require '[io.staticweb.rate-limit.storage :as storage])
 (require '[io.staticweb.rate-limit.redis :as redis])
 (require '[org.httpkit.server :refer [run-server]])
-(require '[app.io-staticweb-rate-limit-util :refer [ip-rate-custom-limit]])
+(require '[app.io-staticweb-rate-limit-util :refer [ip-email-rate-limit]])
 
 ; Define redis connection
 (def redis-conn-pw
@@ -18,7 +18,7 @@
 (def redis-storage (redis/redis-storage redis-conn-pw))
 
 ; Define redis limit
-(def r-limit (ip-rate-custom-limit :limit-id 1 (java.time.Duration/ofSeconds 10)))
+(def r-limit (ip-email-rate-limit :limit-id 1 (java.time.Duration/ofSeconds 10)))
 
 ; Define redis middleware
 (def r-rate-limit-config {:storage redis-storage :limit r-limit})
