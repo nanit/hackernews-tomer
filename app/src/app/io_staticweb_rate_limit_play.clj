@@ -33,3 +33,9 @@
 (defn -main []
   (run-server app {:port 3000})
   (println "Server is running" {:port 3000}))
+
+
+; TODOs
+; 1. Resolve connection to redis with password - done
+; 2. Create custom rate limit from user email + ip - done (note: user mail stubbed)
+; 3. Find out how to customize response
