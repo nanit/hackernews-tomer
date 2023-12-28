@@ -5,21 +5,7 @@
 (require '[io.staticweb.rate-limit.redis :as redis])
 (require '[org.httpkit.server :refer [run-server]])
 
-;; Instantiate a storage backend
-(def storage (storage/local-storage))
-
-;; Define the rate limit: 1 req/s per IP address
-(def limit (ip-rate-limit :limit-id 1 (java.time.Duration/ofSeconds 10)))
-
-;; Define the middleware configuration
-(def rate-limit-config {:storage storage :limit limit})
-
 ; Define redis connection
-(def redis-conn
-  {:pool {}
-   :spec {:host "localhost"
-          :port 6379}})
-
 (def redis-conn-pw
   {:pool {}
    :spec {:host "localhost"
