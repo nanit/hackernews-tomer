@@ -7,17 +7,17 @@
     (-> ips (clojure.string/split #",") first)
     (:remote-addr req)))
 
-(defrecord IpRateCustomLimit [id quota ttl]
+(defrecord IpRateLimit [id quota ^java.time.Duration ttl]
   limits/RateLimit
   (get-key [self req]
-    (str (.getName (type self)) id "-" (get-client-ip req)))
+    (str (.getName ^Class (type self)) id "-" (:remote-addr req)))
 
   (get-quota [self req]
-    (:user-rate-limit-quota req))
+    quota)
 
   (get-ttl [self req]
-    (:user-rate-limit-ttl req)))
+    ttl))
 
 (defn ip-rate-custom-limit
   [id quota ttl]
-  (->IpRateCustomLimit id quota ttl))
+  (->IpRateLimit id quota ttl))

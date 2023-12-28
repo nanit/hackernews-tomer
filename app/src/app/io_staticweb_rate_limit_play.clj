@@ -18,7 +18,7 @@
 (def redis-storage (redis/redis-storage redis-conn-pw))
 
 ; Define redis limit
-(def r-limit (ip-rate-limit :limit-id 1 (java.time.Duration/ofSeconds 10)))
+(def r-limit (ip-rate-custom-limit :limit-id 1 (java.time.Duration/ofSeconds 10)))
 
 ; Define redis middleware
 (def r-rate-limit-config {:storage redis-storage :limit r-limit})
