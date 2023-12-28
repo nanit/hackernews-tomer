@@ -20,8 +20,14 @@
    :spec {:host "localhost"
           :port 6379}})
 
+(def redis-conn-pw
+  {:pool {}
+   :spec {:host "localhost"
+          :port 6379
+          :password "foo"}})
+
 ; Define redis storage
-(def redis-storage (redis/redis-storage redis-conn))
+(def redis-storage (redis/redis-storage redis-conn-pw))
 
 ; Define redis limit
 (def r-limit (ip-rate-limit :limit-id 1 (java.time.Duration/ofSeconds 10)))
