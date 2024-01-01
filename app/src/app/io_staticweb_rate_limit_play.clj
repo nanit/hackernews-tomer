@@ -5,7 +5,7 @@
 (require '[io.staticweb.rate-limit.redis :as redis])
 (require '[org.httpkit.server :refer [run-server]])
 (require '[app.io-staticweb-rate-limit-util :refer [ip-email-rate-limit]])
-(require '[app.io-staticweb-rate-limit-response :refer [custom-response-builder]])
+(require '[app.io-staticweb-rate-limit-response :refer [custom-rate-limit-response]])
 
 ; Define redis connection
 (def redis-conn-pw
@@ -19,11 +19,10 @@
 (def redis-storage (redis/redis-storage redis-conn-pw))
 
 ; Define redis limit
-(def r-limit (ip-email-rate-limit :limit-id 100 (java.time.Duration/ofSeconds 60)))
+(def r-limit (ip-email-rate-limit :limit-id 1 (java.time.Duration/ofSeconds 5)))
 
 ; Define redis middleware
-; add :response-builder custom-response-builder for custom response
-(def r-rate-limit-config {:storage redis-storage :limit r-limit})
+(def r-rate-limit-config {:storage redis-storage :limit r-limit :response-builder custom-rate-limit-response})
 
   ;; Wrap the /limit route in the rate limiting middleware
 (def app (routes
