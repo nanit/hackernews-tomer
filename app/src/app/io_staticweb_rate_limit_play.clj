@@ -19,7 +19,7 @@
 (def redis-storage (redis/redis-storage redis-conn-pw))
 
 ; Define redis limit
-(def r-limit (ip-email-rate-limit :limit-id 1 (java.time.Duration/ofSeconds 5)))
+(def r-limit (ip-email-rate-limit :limit-id 3 (java.time.Duration/ofSeconds 3)))
 
 ; Define redis middleware
 (def r-rate-limit-config {:storage redis-storage :limit r-limit :response-builder custom-rate-limit-response})
@@ -40,3 +40,4 @@
 ; 1. Resolve connection to redis with password - done
 ; 2. Create custom rate limit from user email + ip - done (note: user mail stubbed)
 ; 3. Find out how to customize response - done
+; 4. Investigate why I don't get 3 attempts in 3 seconds
